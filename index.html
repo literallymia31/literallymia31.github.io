@@ -6,16 +6,25 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
-      background-color: #f9f9f9;
+      background: url('https://i.imgur.com/Epm4Zlg.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #333;
       margin-top: 100px;
     }
     h1 {
       font-size: 36px;
       margin-bottom: 10px;
+      background-color: rgba(255, 255, 255, 0.7);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 15px;
     }
     p {
       font-size: 18px;
+      background-color: rgba(255, 255, 255, 0.7);
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 15px;
     }
     .btn, input[type="text"] {
       margin-top: 20px;
@@ -26,14 +35,14 @@
       cursor: pointer;
     }
     .btn {
-      background-color: #4a90e2;
+      background-color: #3399ff;
       color: white;
     }
     .btn:hover {
-      background-color: #357ABD;
+      background-color: #1a8cff;
     }
     input[type="text"] {
-      border: 2px solid #4a90e2;
+      border: 2px solid #3399ff;
       background-color: white;
       color: #333;
       width: 250px;
@@ -44,8 +53,10 @@
 
   <h1>Hi Irfan</h1>
   <p>I was wondering if you'd like to go on another outing with me.</p>
+  <br>
   <p>Type your available date below, then take a screenshot and send it to me.</p>
 
+  <br>
   <input type="text" id="dateText" placeholder="e.g., Friday night, July 19">
   <br>
   <button class="btn" onclick="showReply()">Submit</button>
