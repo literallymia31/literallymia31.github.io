@@ -15,6 +15,7 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      overflow: hidden;
     }
 
     .container {
@@ -24,6 +25,8 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
       max-width: 400px;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
@@ -36,6 +39,41 @@
       margin-bottom: 20px;
     }
 
+    .btn, .option {
+      background-color: #ff9999; /* soft red */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 5px;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover, .option:hover {
+      background-color: #ff6666; /* warmer red on hover */
+    }
+
+    .thankyou {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #666;
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .fade-in {
+      display: block;
+      opacity: 1 !important;
+    }
+
+    #dateInputSection {
+      display: none;
+      margin-top: 20px;
+    }
+
     input[type="text"] {
       padding: 10px 15px;
       width: 80%;
@@ -43,30 +81,29 @@
       border-radius: 20px;
       font-size: 14px;
       outline: none;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       background-color: white;
     }
 
-    .btn {
-      background-color: #ff9999;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background-color 0.2s;
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      color: #ff5e7e;
+      animation: floatUp 2s ease-out forwards;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 20px;
     }
 
-    .btn:hover {
-      background-color: #ff6666;
-    }
-
-    .thankyou {
-      margin-top: 30px;
-      font-size: 14px;
-      color: #666;
-      display: none; /* hidden by default */
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-120px);
+      }
     }
 
     @media (max-width: 480px) {
@@ -80,40 +117,58 @@
 
   <div class="container">
     <h1>Hi Irfan</h1>
-    <p>I was wondering if you'd like to go on another outing with me.</p>
-    <p>Type your available date below, then take a screenshot and send it to me.</p>
+    <p>Would you like to go on another outing with me?</p>
 
-    <input type="text" id="dateText" placeholder="e.g., Friday night, July 19">
-    <br>
-    <button class="btn" onclick="showReply()">Submit</button>
+    <!-- Yes/No Options -->
+    <button class="option" onclick="answerYes()">Yes</button>
+    <button class="option" onclick="answerNo()">No</button>
 
-    <!-- Thank-you message (shown after valid input) -->
+    <!-- Input for date if 'Yes' is selected -->
+    <div id="dateInputSection">
+      <p>Please type your available date below:</p>
+      <input type="text" id="dateText" placeholder="e.g., Friday night, July 19"><br>
+      <button class="btn" onclick="submitDate()">Submit</button>
+    </div>
+
+    <!-- Thank you message -->
     <p class="thankyou" id="thankYouMessage">
       Thank you for taking the time to reply 🦋🌸 That means more than you know.
     </p>
   </div>
 
-  <script>
-    function showReply() {
-      const dateText = document.getElementById("dateText").value.trim().toLowerCase();
-      const thankYou = document.getElementById("thankYouMessage");
+  <!-- Heart animation container -->
+  <div id="heartContainer"></div>
 
-      thankYou.style.display = "none"; // Reset each time
+  <script>
+    function answerYes() {
+      document.getElementById("dateInputSection").style.display = "block";
+      document.getElementById("thankYouMessage").classList.remove("fade-in");
+
+      // Heart float animation
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      document.getElementById("heartContainer").appendChild(heart);
+      setTimeout(() => heart.remove(), 2000);
+    }
+
+    function answerNo() {
+      document.getElementById("dateInputSection").style.display = "none";
+      document.getElementById("thankYouMessage").classList.remove("fade-in");
+      alert("That’s okay, Irfan 🦋🌸 Maybe another time!");
+    }
+
+    function submitDate() {
+      const dateText = document.getElementById("dateText").value.trim();
 
       if (!dateText) {
         alert("Please tell me when you're free.");
         return;
       }
 
-      const rejectionWords = ["no", "i'm busy", "not free", "maybe next time", "sorry"];
-      const isRejection = rejectionWords.some(word => dateText.includes(word));
-
-      if (isRejection) {
-        alert("Oh... that's okay. Let me know when you're free next time.");
-      } else {
-        alert("Thank you for your time, Irfan 🦋🌸\nIt really means a lot to me!");
-        thankYou.style.display = "block";
-      }
+      alert("Thank you for your time, Irfan 🦋🌸\nI’m looking forward to our outing on " + dateText + "!");
+      const msg = document.getElementById("thankYouMessage");
+      msg.classList.add("fade-in");
     }
   </script>
 
