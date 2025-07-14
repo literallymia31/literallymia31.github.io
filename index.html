@@ -1,65 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Hi Irfan</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      background: url('https://i.imgur.com/Epm4Zlg.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background-color: #e6f7ff; /* soft sky blue */
       color: #333;
-      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-image: url('https://i.imgur.com/0XkUOaR.png'); /* minimalist butterfly */
+      background-repeat: no-repeat;
+      background-position: top right;
+      background-size: 150px;
     }
-    h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-      background-color: rgba(255, 255, 255, 0.7);
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 15px;
-    }
-    p {
-      font-size: 18px;
-      background-color: rgba(255, 255, 255, 0.7);
-      display: inline-block;
-      padding: 8px 16px;
-      border-radius: 15px;
-    }
-    .btn, input[type="text"] {
-      margin-top: 20px;
-      padding: 12px 25px;
-      font-size: 16px;
-      border: none;
+
+    .container {
+      background-color: #ffffffcc; /* semi-transparent white */
+      padding: 30px 40px;
       border-radius: 25px;
-      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
     }
-    .btn {
-      background-color: #3399ff;
-      color: white;
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
     }
-    .btn:hover {
-      background-color: #1a8cff;
+
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
     }
+
     input[type="text"] {
-      border: 2px solid #3399ff;
-      background-color: white;
-      color: #333;
-      width: 250px;
+      padding: 10px 15px;
+      width: 80%;
+      border: 2px solid #66bfff;
+      border-radius: 20px;
+      font-size: 14px;
+      outline: none;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      background-color: #66bfff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #3399ff;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>Hi Irfan</h1>
-  <p>I was wondering if you'd like to go on another outing with me.</p>
-  <br>
-  <p>Type your available date below, then take a screenshot and send it to me.</p>
+  <div class="container">
+    <h1>Hi Irfan</h1>
+    <p>I was wondering if you'd like to go on another outing with me.</p>
+    <p>Type your available date below, then take a screenshot and send it to me.</p>
 
-  <br>
-  <input type="text" id="dateText" placeholder="e.g., Friday night, July 19">
-  <br>
-  <button class="btn" onclick="showReply()">Submit</button>
+    <input type="text" id="dateText" placeholder="e.g., Friday night, July 19">
+    <br>
+    <button class="btn" onclick="showReply()">Submit</button>
+  </div>
 
   <script>
     function showReply() {
