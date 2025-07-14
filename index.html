@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hi Irfan 💙</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background-color: #fff5f9;
+      color: #333;
+      margin-top: 100px;
+    }
+    .heart {
+      font-size: 50px;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); color: #ff6699; }
+      50% { transform: scale(1.2); color: #ff3366; }
+      100% { transform: scale(1); color: #ff6699; }
+    }
+    .btn, input[type="text"] {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+    .btn {
+      background-color: #ff6699;
+      color: white;
+    }
+    .btn:hover {
+      background-color: #ff3366;
+    }
+    input[type="text"] {
+      border: 2px solid #ff6699;
+      background-color: white;
+      color: #333;
+      width: 250px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart">💗</div>
+
+  <h1>Hi Irfan 👋</h1>
+  <p>I've been thinking...</p>
+  <h2>Wanna go on another date with me? 😊</h2>
+
+  <p>Type your available date here:</p>
+  <input type="text" id="dateText" placeholder="e.g., Friday night, July 19">
+
+  <br>
+
+  <button class="btn" onclick="showReply()">Yes, let’s go!</button>
+
+  <script>
+    function showReply() {
+      const dateText = document.getElementById("dateText").value;
+      if (dateText.trim() !== "") {
+        alert("Yay!! 🥰 Can’t wait for our date on " + dateText + "!");
+      } else {
+        alert("Please tell me when you're free, Irfan 🥺");
+      }
+    }
+  </script>
+
+</body>
+</html>
