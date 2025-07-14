@@ -15,7 +15,6 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      position: relative;
     }
 
     .container {
@@ -25,7 +24,6 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
       max-width: 400px;
-      z-index: 1;
     }
 
     h1 {
@@ -71,15 +69,6 @@
       display: none; /* hidden by default */
     }
 
-    .flower {
-      position: absolute;
-      top: 30px;
-      left: 30px;
-      width: 60px;
-      opacity: 0.8;
-      z-index: 0;
-    }
-
     @media (max-width: 480px) {
       .container {
         padding: 20px;
@@ -88,10 +77,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Flower image -->
-  <img src="https://i.imgur.com/sS8qEQl.png" alt="Flower" class="flower">
-
 
   <div class="container">
     <h1>Hi Irfan</h1>
@@ -102,9 +87,9 @@
     <br>
     <button class="btn" onclick="showReply()">Submit</button>
 
-    <!-- Thank-you message (initially hidden) -->
+    <!-- Thank-you message (shown after valid input) -->
     <p class="thankyou" id="thankYouMessage">
-      Thank you for taking the time to reply. That means more than you know.
+      Thank you for taking the time to reply 🦋🌸 That means more than you know.
     </p>
   </div>
 
@@ -113,8 +98,7 @@
       const dateText = document.getElementById("dateText").value.trim().toLowerCase();
       const thankYou = document.getElementById("thankYouMessage");
 
-      // Hide message every time before re-checking
-      thankYou.style.display = "none";
+      thankYou.style.display = "none"; // Reset each time
 
       if (!dateText) {
         alert("Please tell me when you're free.");
@@ -127,8 +111,8 @@
       if (isRejection) {
         alert("Oh... that's okay. Let me know when you're free next time.");
       } else {
-        alert("Nice! Can't wait for our date on " + dateText + ". Screenshot this and send it to me.");
-        thankYou.style.display = "block"; // Show thank-you message
+        alert("Thank you for your time, Irfan 🦋🌸\nIt really means a lot to me!");
+        thankYou.style.display = "block";
       }
     }
   </script>
